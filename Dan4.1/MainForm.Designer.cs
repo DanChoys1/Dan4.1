@@ -49,6 +49,8 @@ namespace Dan4._1 {
             this.splitArrayButton = new System.Windows.Forms.Button();
             this.deleteDataButton = new System.Windows.Forms.Button();
             this.removeEmptyColumnsButton = new System.Windows.Forms.Button();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.headerPictureBox)).BeginInit();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainDataGridView)).BeginInit();
@@ -64,9 +66,9 @@ namespace Dan4._1 {
             this.headerPictureBox.Size = new System.Drawing.Size(803, 30);
             this.headerPictureBox.TabIndex = 1;
             this.headerPictureBox.TabStop = false;
-            this.headerPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.headerPictureBox_MouseDown);
-            this.headerPictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.headerPictureBox_MouseMove);
-            this.headerPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.headerPictureBox_MouseUp);
+            this.headerPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.HeaderPictureBox_MouseDown);
+            this.headerPictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.HeaderPictureBox_MouseMove);
+            this.headerPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.HeaderPictureBox_MouseUp);
             // 
             // menuStrip
             // 
@@ -93,8 +95,9 @@ namespace Dan4._1 {
             // openFilesToolStripMenuItem
             // 
             this.openFilesToolStripMenuItem.Name = "openFilesToolStripMenuItem";
-            this.openFilesToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.openFilesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openFilesToolStripMenuItem.Text = "Открыть";
+            this.openFilesToolStripMenuItem.Click += new System.EventHandler(this.OpenFilesToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
@@ -102,7 +105,7 @@ namespace Dan4._1 {
             this.initialDataToolStripMenuItem,
             this.resultDataToolStripMenuItem});
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Сохранить";
             // 
             // initialDataToolStripMenuItem
@@ -110,12 +113,14 @@ namespace Dan4._1 {
             this.initialDataToolStripMenuItem.Name = "initialDataToolStripMenuItem";
             this.initialDataToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.initialDataToolStripMenuItem.Text = "Исходные данные";
+            this.initialDataToolStripMenuItem.Click += new System.EventHandler(this.InitialDataToolStripMenuItem_Click);
             // 
             // resultDataToolStripMenuItem
             // 
             this.resultDataToolStripMenuItem.Name = "resultDataToolStripMenuItem";
             this.resultDataToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.resultDataToolStripMenuItem.Text = "Полученные данные";
+            this.resultDataToolStripMenuItem.Click += new System.EventHandler(this.ResultDataToolStripMenuItem_Click);
             // 
             // randomInputToolStripMenuItem
             // 
@@ -132,27 +137,27 @@ namespace Dan4._1 {
             this.sizeValuesToolStripTextBox.Name = "sizeValuesToolStripTextBox";
             this.sizeValuesToolStripTextBox.Size = new System.Drawing.Size(150, 23);
             this.sizeValuesToolStripTextBox.Text = "Введите размер массива";
-            this.sizeValuesToolStripTextBox.LostFocus += new System.EventHandler(this.sizeValuesToolStripTextBox_LostFocus);
-            this.sizeValuesToolStripTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sizeValuesToolStripTextBox_KeyDown);
-            this.sizeValuesToolStripTextBox.Click += new System.EventHandler(this.sizeValuesToolStripTextBox_Click);
-            this.sizeValuesToolStripTextBox.TextChanged += new System.EventHandler(this.sizeValuesToolStripTextBox_TextChanged);
+            this.sizeValuesToolStripTextBox.LostFocus += new System.EventHandler(this.SizeValuesToolStripTextBox_LostFocus);
+            this.sizeValuesToolStripTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SizeValuesToolStripTextBox_KeyDown);
+            this.sizeValuesToolStripTextBox.Click += new System.EventHandler(this.SizeValuesToolStripTextBox_Click);
+            this.sizeValuesToolStripTextBox.TextChanged += new System.EventHandler(this.SizeValuesToolStripTextBox_TextChanged);
             // 
             // intervalValuesToolStripTextBox
             // 
             this.intervalValuesToolStripTextBox.Name = "intervalValuesToolStripTextBox";
             this.intervalValuesToolStripTextBox.Size = new System.Drawing.Size(150, 23);
             this.intervalValuesToolStripTextBox.Text = "Введите интервал чисел";
-            this.intervalValuesToolStripTextBox.LostFocus += new System.EventHandler(this.intervalValuestoolStripTextBox_LostFocus);
-            this.intervalValuesToolStripTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.intervalValuestoolStripTextBox_KeyDown);
-            this.intervalValuesToolStripTextBox.Click += new System.EventHandler(this.intervalValuestoolStripTextBox_Click);
-            this.intervalValuesToolStripTextBox.TextChanged += new System.EventHandler(this.intervalValuestoolStripTextBox_TextChanged);
+            this.intervalValuesToolStripTextBox.LostFocus += new System.EventHandler(this.IntervalValuestoolStripTextBox_LostFocus);
+            this.intervalValuesToolStripTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.IntervalValuestoolStripTextBox_KeyDown);
+            this.intervalValuesToolStripTextBox.Click += new System.EventHandler(this.IntervalValuestoolStripTextBox_Click);
+            this.intervalValuesToolStripTextBox.TextChanged += new System.EventHandler(this.IntervalValuestoolStripTextBox_TextChanged);
             // 
             // inputValuesToolStripMenuItem
             // 
             this.inputValuesToolStripMenuItem.Name = "inputValuesToolStripMenuItem";
             this.inputValuesToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.inputValuesToolStripMenuItem.Text = "Ввести числа";
-            this.inputValuesToolStripMenuItem.Click += new System.EventHandler(this.inputValuesToolStripMenuItem_Click);
+            this.inputValuesToolStripMenuItem.Click += new System.EventHandler(this.InputValuesToolStripMenuItem_Click);
             // 
             // testToolStripMenuItem
             // 
@@ -174,7 +179,7 @@ namespace Dan4._1 {
             this.closeFormButton.Size = new System.Drawing.Size(25, 25);
             this.closeFormButton.TabIndex = 3;
             this.closeFormButton.UseVisualStyleBackColor = true;
-            this.closeFormButton.Click += new System.EventHandler(this.closeFormButton_Click);
+            this.closeFormButton.Click += new System.EventHandler(this.CloseFormButton_Click);
             // 
             // label1
             // 
@@ -193,7 +198,7 @@ namespace Dan4._1 {
             this.mainDataGridView.RowTemplate.Height = 25;
             this.mainDataGridView.Size = new System.Drawing.Size(781, 90);
             this.mainDataGridView.TabIndex = 5;
-            this.mainDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.mainDataGridView_CellEndEdit);
+            this.mainDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.MainDataGridView_CellEndEdit);
             // 
             // evenElementsDataGridView
             // 
@@ -240,7 +245,7 @@ namespace Dan4._1 {
             this.splitArrayButton.Text = "Разбить массив";
             this.splitArrayButton.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.splitArrayButton.UseVisualStyleBackColor = true;
-            this.splitArrayButton.Click += new System.EventHandler(this.splitArrayButton_Click);
+            this.splitArrayButton.Click += new System.EventHandler(this.SplitArrayButton_Click);
             // 
             // deleteDataButton
             // 
@@ -250,7 +255,7 @@ namespace Dan4._1 {
             this.deleteDataButton.TabIndex = 11;
             this.deleteDataButton.Text = "Удалить данные";
             this.deleteDataButton.UseVisualStyleBackColor = true;
-            this.deleteDataButton.Click += new System.EventHandler(this.deleteDataButton_Click);
+            this.deleteDataButton.Click += new System.EventHandler(this.DeleteDataButton_Click);
             // 
             // removeEmptyColumnsButton
             // 
@@ -260,7 +265,11 @@ namespace Dan4._1 {
             this.removeEmptyColumnsButton.TabIndex = 12;
             this.removeEmptyColumnsButton.Text = "Убрать пустые столбцы";
             this.removeEmptyColumnsButton.UseVisualStyleBackColor = true;
-            this.removeEmptyColumnsButton.Click += new System.EventHandler(this.removeEmptyColumnsButton_Click);
+            this.removeEmptyColumnsButton.Click += new System.EventHandler(this.RemoveEmptyColumnsButton_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
             // 
             // MainForm
             // 
@@ -319,5 +328,7 @@ namespace Dan4._1 {
         private System.Windows.Forms.ToolStripTextBox sizeValuesToolStripTextBox;
         private System.Windows.Forms.ToolStripTextBox intervalValuesToolStripTextBox;
         private System.Windows.Forms.ToolStripMenuItem inputValuesToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }
