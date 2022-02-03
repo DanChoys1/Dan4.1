@@ -27,8 +27,7 @@ namespace Dan4._1
                     _evenArray.Add(index, _mainArray[index]);
                     _evenSum += _mainArray[index];
                 }
-
-                if (index % 2 != 0)
+                else
                 {
                     _oddArray.Add(index, _mainArray[index]);
                     _oddSum += _mainArray[index];

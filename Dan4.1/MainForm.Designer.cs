@@ -95,7 +95,7 @@ namespace Dan4._1 {
             // openFilesToolStripMenuItem
             // 
             this.openFilesToolStripMenuItem.Name = "openFilesToolStripMenuItem";
-            this.openFilesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openFilesToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.openFilesToolStripMenuItem.Text = "Открыть";
             this.openFilesToolStripMenuItem.Click += new System.EventHandler(this.OpenFilesToolStripMenuItem_Click);
             // 
@@ -105,7 +105,7 @@ namespace Dan4._1 {
             this.initialDataToolStripMenuItem,
             this.resultDataToolStripMenuItem});
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.saveToolStripMenuItem.Text = "Сохранить";
             // 
             // initialDataToolStripMenuItem
@@ -164,6 +164,7 @@ namespace Dan4._1 {
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
             this.testToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.testToolStripMenuItem.Text = "Тестирование";
+            this.testToolStripMenuItem.Click += new System.EventHandler(this.TestToolStripMenuItem_Click);
             // 
             // aboutProgramToolStripMenuItem1
             // 

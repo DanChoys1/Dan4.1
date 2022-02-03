@@ -23,6 +23,7 @@ namespace Dan4._1
             InitializeComponent();
 
             headerPictureBox.BackColor = ColorTranslator.FromHtml("#a4e6fc");
+            menuStrip.BackColor = ColorTranslator.FromHtml("#a4e6fc");
             closeFormButton.BackColor = ColorTranslator.FromHtml("#FF0000");
 
             mainDataGridView.AllowUserToAddRows = false;
@@ -458,6 +459,17 @@ namespace Dan4._1
                     MessageBox.Show("Не удалось сохранить данные.", "Ошибка!");
                 }
             }
+        }
+
+        //////////////////////////////////////////////Testing//////////////////////////////////////////////////////////////////
+        private void TestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            const int countTest = 5;
+            Tester test = new Tester();
+
+            string msg = test.Start(countTest);
+
+            MessageBox.Show(msg, "Результат тестирования");
         }
 
         //////////////////////////////////////////////HEADER//////////////////////////////////////////////////////////////////
